@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float boostSpeed = 30f;
     [SerializeField] float baseSpeed = 20f;
 
+    bool canMove = true;
     SurfaceEffector2D surfaceEffector2D;
     void Start()
     {
@@ -23,10 +24,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      if (canMove){
         RotatePlayer();
         RespondeToBoost();
+      }
+     
     }
 
+
+    public void DisableControls() {
+      canMove = false;
+    }
     void RespondeToBoost()
     {
         if (Input.GetKey(KeyCode.UpArrow)){
